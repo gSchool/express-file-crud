@@ -17,5 +17,21 @@ module.exports = {
   },
   get_all_books: () => {
     return data_mem;
+  },
+  get_book_by_id: (id) => {
+    // Set checker var
+    let checker = 0;
+    // Iterate through 
+    data_mem.forEach( (item) => {
+      if (item.id === id) {
+        checker = 1;
+        return item.title;
+      }
+    })
+
+    // Return undefined if none found by id
+    if (checker = 0) {
+      return undefined;
+    }
   }
 }
