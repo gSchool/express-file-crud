@@ -24,7 +24,7 @@ Write an Express app, that uses a file for persistent storage.
 1. `git add .`
 1. `git commit -m "Initial project setup"`
 
-## Part : Set up nodemon and your npm scripts
+## Part 2: Set up nodemon and your npm scripts
 
 1. `npm install --save-dev nodemon`
 1. Open `package.json`
@@ -33,7 +33,7 @@ Write an Express app, that uses a file for persistent storage.
   * make sure that you have the trailing commas in the right places!
 1. `npm run watch`
 
-## Part : Create an Express server
+## Part 3: Create an Express server
 
 1. Open `app.js`
 1. Require Express
@@ -45,7 +45,7 @@ Write an Express app, that uses a file for persistent storage.
 1. Check that this works by running `nodemon app.js` in your directory
 1. Git add, commit, push
 
-## Part : Set up your database file
+## Part 4: Set up your database file
 
 1. `mkdir db`
   * `db` is short for "database"
@@ -89,7 +89,7 @@ Write an Express app, that uses a file for persistent storage.
     can get large, have nothing to do with development, and might hold sensitive
     data
 
-## Part : Create a module called data_store
+## Part 5: Create a module called data_store
 
 1. Create a new file called `data_store.js`
 1. Open `data_store.js`
@@ -97,7 +97,7 @@ Write an Express app, that uses a file for persistent storage.
 1. Open `app.js`
 1. Require your data_store module
 
-## Part : Implement a function that reads the contents of the file into memory
+## Part 6: Implement a function that reads the contents of the file into memory
 
 1. Open `data_store.js`
 1. Write a function called `load_from_file` that reads all the contents of the `db/data.json` file into memory
@@ -108,19 +108,19 @@ Write an Express app, that uses a file for persistent storage.
 1. Open `app.js`
 1. Call `load_from_file` before you call `app.listen`
 
-## Part : Implement a function that returns all the books
+## Part 7: Implement a function that returns all the books
 
 1. Open `data_store.js`
 1. Write a function called `get_all_books` that returns an array of all the books that are in memory
 1. Export this function.
 
-## Part : Implement GET /api/books
+## Part 8: Implement GET /api/books
 
 1. Define a GET route at /api/books
 1. The route should send a json response with an array of all the books
   * use your data store's `get_all_books` function to achieve this
 
-## Part : Implement finding a book by its ID
+## Part 9: Implement finding a book by its ID
 
 1. Open `data_store.js`
 1. Write a function called `get_book_by_id(id)`
@@ -128,14 +128,14 @@ Write an Express app, that uses a file for persistent storage.
   * if no book is found, return `undefined`
 1. Export this function.
 
-## Part : Implement GET /api/books/:id
+## Part 10: Implement GET /api/books/:id
 
 1. Define a GET route at /api/books/:id
 1. The route should send a json response with the book that has the given ID
   * use your data store's `get_book_by_id(id)` function to achieve this
 1. If there is no book with the given ID, respond with 404 Not Found
 
-## Part : Implement a function that updates the file with the current information
+## Part 11: Implement a function that updates the file with the current information
 
 1. Open `data_store.js`
 1. Write a function called `write_to_file` that writes all the books that are in memory, back into the file
@@ -145,7 +145,7 @@ Write an Express app, that uses a file for persistent storage.
 1. Do NOT export the above-mentioned variable
   * We want to restrict access to only the functions that we export
 
-## Part : Implement adding a new book (with a unique id) to the data store
+## Part 12: Implement adding a new book (with a unique id) to the data store
 
 1. Open `data_store.js`
 1. Create a new global variable called `LAST_ID`
@@ -159,13 +159,13 @@ Write an Express app, that uses a file for persistent storage.
   * returns the added book (with its unique ID)
 1. Export this function
 
-## Part : Implement POST /api/books
+## Part 13: Implement POST /api/books
 
 1. Install and use `body-parser`
 1. Get the body of the request and pass it to `add_book`
 1. The route should send a json response with the newly-created book
 
-## Part : Implement updating a book in the data store
+## Part 14: Implement updating a book in the data store
 
 1. Open `data_store.js`
 1. Write a function called `update_book` that:
@@ -179,13 +179,13 @@ Write an Express app, that uses a file for persistent storage.
   * returns the updated book
 1. Export this function
 
-## Part : Implement PUT /api/books/:id
+## Part 15: Implement PUT /api/books/:id
 
 1. Get the body of the request and pass it to `update_book`
 1. The route should send a json response with the newly-updated book
 1. If there is no book with the given ID, respond with 404 Not Found
 
-## Part : Implement deleting a book from the data store
+## Part 16: Implement deleting a book from the data store
 
 1. Open `data_store.js`
 1. Write a function called `delete_book` that:
@@ -197,9 +197,13 @@ Write an Express app, that uses a file for persistent storage.
   * returns the removed book
 1. Export this function
 
-## Part : In app.js, implement DELETE /api/books/:id
+## Part 17: Implement DELETE /api/books/:id
 
 1. Define a DELETE route at /api/books/:id
 1. The route should send a json response with the book that was deleted
   * use your data store's `delete_book` function to achieve this
 1. If there is no book with the given ID, respond with 404 Not Found
+
+## STRETCH
+
+Implement the data store using a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
