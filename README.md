@@ -31,3 +31,15 @@ Write an Express app, that uses a file for persistent storage.
   * add `"watch": "\`npm bin\`/nodemon"`
   * make sure that you have the trailing commas in the right places!
 1. `npm run watch`
+
+## Part : Create an Express server
+
+1. Open `app.js`
+1. Require Express
+1. Initialize an `app`
+1. Determine the port to use
+  * The port to use could be passed in as the second command line argument
+  * If not provided, default to 8000
+1. Use `app.listen` to bind and listen for connections on the above port
+1. Check that this works by running `nodemon app.js` in your directory
+1. Git add, commit, push
