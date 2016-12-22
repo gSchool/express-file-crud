@@ -1,10 +1,12 @@
 const fs = require('fs')
+let obj = null
 
-module.exports = function load_from_file() {
+module.exports.load_from_file = () => {
   fs.readFile('./db/data.json', 'utf-8', (err, data) => {
     if(err){
-      console.error("dumb dumb")
+      throw err
     }
-    console.log(data)
+    obj = data
+    console.log(obj);
   })
 }
