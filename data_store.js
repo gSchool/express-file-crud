@@ -21,20 +21,22 @@ module.exports = {
       object.id = LAST_ID + 1;
       global_data.push(object);
       write_to_file();
+      return global_data[LAST_ID];
     },
     update_book(id, object){
       let idx;
+
       let original = global_data.find((x, y) => {
         idx = y;
         return x.id === id;
       });
       if (original) {
+        object.id = id;
         global_data[idx] = object;
-        global_data[idx].id = id;
         write_to_file();
-        return global_data;
+        return global_data[idx];
       } else {
-        return;
+        return undefined;
       }
     }
 };

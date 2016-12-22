@@ -27,6 +27,14 @@ app.get('/api/books/:id', jp, (req, res) => {
 });
 
 app.post('/api/books', jp, (req, res) => {
-  ds.add_book(req.body);
-  res.status(200).send(req.body);
+  let add = ds.add_book(req.body);
+  let status = add ? 200 : 400;
+  res.status(status).send(add);
+});
+
+app.put('/api/books/:id', jp, (req, res) => {
+  let id = Number(req.params.id);
+  let update = ds.update_book(id, req.body);
+  let status = update ? 200 : 404;
+  res.status(status).send(update);
 });
