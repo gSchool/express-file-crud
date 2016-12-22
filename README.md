@@ -107,3 +107,30 @@ Write an Express app, that uses a file for persistent storage.
 1. Export this function.
 1. Open `app.js`
 1. Call `load_from_file` before you call `app.listen`
+
+## Part : Implement a function that returns all the books
+
+1. Open `data_store.js`
+1. Write a function called `get_all_books` that returns an array of all the books that are in memory
+1. Export this function.
+
+## Part : Implement GET /api/books
+
+1. Define a GET route at /api/books
+1. The route should send a json response with an array of all the books
+  * use your data store's `get_all_books` function to achieve this
+
+## Part : Implement finding a book by its ID
+
+1. Open `data_store.js`
+1. Write a function called `get_book_by_id(id)`
+  * returns the book with that ID
+  * if no book is found, return `undefined`
+1. Export this function.
+
+## Part : Implement GET /api/books/:id
+
+1. Define a GET route at /api/books/:id
+1. The route should send a json response with the book that has the given ID
+  * use your data store's `get_book_by_id(id)` function to achieve this
+1. If there is no book with the given ID, respond with 404 Not Found
