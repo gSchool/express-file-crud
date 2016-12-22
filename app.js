@@ -11,6 +11,17 @@ app.get('/api/books', (req, res) => {
   res.send(data);
 })
 
+app.get('/api/books/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let book = dataStore.get_book_by_id(id);
+  if (book) {
+    res.send(book);
+  }
+  else {
+    res.sendStatus(404);
+  }
+})
+
 app.listen(port, function() {
     console.log("Listening on port: ",port);
   })

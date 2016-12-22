@@ -13,7 +13,14 @@ module.exports = {
       global = data;
     })
   },
+
   get_all_books() {
     return global;
+  },
+
+  get_book_by_id(id) {
+    let books = JSON.parse(global);
+    let book = books.find((element) => element.id === id);
+    return book;
   }
 }
