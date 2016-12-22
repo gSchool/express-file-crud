@@ -25,3 +25,10 @@ app.get('/api/books/:id', jp, (req, res) => {
   let status = data ? 200 : 404;
   res.status(status).send(data);
 });
+
+app.post('/api/books', jp, (req, res) => {
+  // console.log('req.body', JSON.parse(req.body), typeof req.body)
+  // let body = JSON.parse(req.body);
+  ds.add_book(req.body);
+  res.status(200).send(req.body);
+});
