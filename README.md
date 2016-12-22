@@ -43,3 +43,47 @@ Write an Express app, that uses a file for persistent storage.
 1. Use `app.listen` to bind and listen for connections on the above port
 1. Check that this works by running `nodemon app.js` in your directory
 1. Git add, commit, push
+
+## Part : Set up your database file
+
+1. `mkdir db`
+  * `db` is short for "database"
+1. `cd db`
+1. `touch seed.json`
+  * this is where our initial data (i.e. "seed data") is stored
+  * this file will be used to reset our database file whenever we want to start over
+1. open `seed.json` and paste the following inside
+
+    ```js
+    [
+      {
+        "id": 1,
+        "author": "Marijn Haverbeke",
+        "title": "Eloquent JavaScript"
+      },
+      {
+        "id": 2,
+        "author": "Nick Morgan",
+        "title": "JavaScript for Kids"
+      },
+      {
+        "id": 3,
+        "author": "Kyle Simpson",
+        "title": "You Don't Know JS",
+      }
+    ]
+    ```
+
+1. Go back to your project directory
+1. Open `package.json`
+1. Inside `scripts`
+  * add `"reset": "cp seed.json data.json"`
+  * make sure that you have the trailing commas in the right places!
+1. `npm run reset`
+1. `ls`
+  * notice that there is now a `data.json` in the `db` directory
+  * `db/data.json` is the file that we are going to modify
+1. `echo db/data.json >> .gitignore`
+  * database files are typically not checked into source control, because they
+    can get large, have nothing to do with development, and might hold sensitive
+    data
