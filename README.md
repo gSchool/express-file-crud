@@ -80,7 +80,7 @@ Write an Express app, that uses a file for persistent storage.
 1. Go back to your project directory
 1. Open `package.json`
 1. Inside `scripts`
-  * add `"reset": "cp seed.json data.json"`
+  * add `"reset": "cp db/seed.json db/data.json"`
   * make sure that you have the trailing commas in the right places!
 1. `npm run reset`
 1. `ls`
