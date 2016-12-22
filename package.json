@@ -4,6 +4,7 @@
   "description": "Write an Express app, that uses a file for persistent storage.",
   "main": "app.js",
   "scripts": {
+    "watch":"nodemon" ,
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
