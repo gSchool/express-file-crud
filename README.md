@@ -5,6 +5,7 @@ Write an Express app, that uses a file for persistent storage.
 ## Expectations
 
 * Use ES6 wherever possible (e.g. `let`, `const`, destructuring and fat arrow functions)
+* Use the [GitHub Workflow](https://guides.github.com/introduction/flow/)
 * Make regular commits
   * Make a commit every time you complete a feature
   * Give each commit a meaningful commit message
