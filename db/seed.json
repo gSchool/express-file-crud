@@ -1,0 +1,20 @@
+[
+      {
+        "id": 1,
+        "author": "Marijn Haverbeke",
+        "title": "Eloquent JavaScript",
+        "lable": "🦄"
+      },
+      {
+        "id": 2,
+        "author": "Nick Morgan",
+        "title": "JavaScript for Kids",
+        "lable": "🐣"
+      },
+      {
+        "id": 3,
+        "author": "Kyle Simpson",
+        "title": "You Don't Know JS",
+        "lable": "🐲"
+      }
+    ]
