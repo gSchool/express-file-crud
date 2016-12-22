@@ -12,6 +12,7 @@ Write an Express app, that uses a file for persistent storage.
 * All file operations must be asynchronous
 * Your code must be perfectly indented.  If we can't read it, we aren't going to grade it.
 * Work in your project directory at all times
+* All access to the data (both in the file and in memory) can only be done through your data_store module
 
 ## Part 1: Set up your npm/Express project
 
@@ -87,3 +88,22 @@ Write an Express app, that uses a file for persistent storage.
   * database files are typically not checked into source control, because they
     can get large, have nothing to do with development, and might hold sensitive
     data
+
+## Part : Create a module called data_store
+
+1. Create a new file called `data_store.js`
+1. Open `data_store.js`
+1. Create an empty module in here.  We will fill it in the following steps.
+1. Open `app.js`
+1. Require your data_store module
+
+## Part : Implement a function that reads the contents of the file into memory
+
+1. Open `data_store.js`
+1. Write a function called `load_from_file` that reads all the contents of the `db/data.json` file into memory
+  * *TIP:* "into memory" means save it in a variable (use a global variable)
+  * File read/write is slow.  So we will work from memory as much as
+    possible and only update the file when we have to.
+1. Export this function.
+1. Open `app.js`
+1. Call `load_from_file` before you call `app.listen`
