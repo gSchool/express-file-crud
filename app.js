@@ -16,3 +16,8 @@ app.get('/api/books', (req, res) => {
   let books = data_store.get_all_books();
   res.send(books);
 })
+
+// GET /api/books/:id
+app.get('/api/books/:id', (req, res) => {
+  let id = Number(req.params.id);
+})
