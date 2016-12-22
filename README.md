@@ -8,11 +8,11 @@ Write an Express app, that uses a file for persistent storage.
 * Make regular commits
   * Make a commit every time you complete a feature
   * Give each commit a meaningful commit message
-  * Don't expect the directions in this README to tell you went to commit
+  * Don't expect the directions in this README to tell you when to commit
 * All file operations must be asynchronous
 * Your code must be perfectly indented.  If we can't read it, we aren't going to grade it.
 * Work in your project directory at all times
-* All access to the data (both in the file and in memory) can only be done through your data_store module
+* All access to the data (both in the file and in memory) can only be done through your `data_store` module
 
 ## Part 1: Set up your npm/Express project
 
@@ -29,7 +29,7 @@ Write an Express app, that uses a file for persistent storage.
 1. `npm install --save-dev nodemon`
 1. Open `package.json`
 1. Inside `scripts`
-  * add `"watch": "\`npm bin\`/nodemon"`
+  * add ``"watch": "`npm bin`/nodemon"``
   * make sure that you have the trailing commas in the right places!
 1. `npm run watch`
 
@@ -41,6 +41,7 @@ Write an Express app, that uses a file for persistent storage.
 1. Determine the port to use
   * The port to use could be passed in as the second command line argument
   * If not provided, default to 8000
+  * Store the port in a `const`
 1. Use `app.listen` to bind and listen for connections on the above port
 1. Check that this works by running `nodemon app.js` in your directory
 1. Git add, commit, push
