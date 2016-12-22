@@ -204,6 +204,10 @@ Write an Express app, that uses a file for persistent storage.
   * use your data store's `delete_book` function to achieve this
 1. If there is no book with the given ID, respond with 404 Not Found
 
+## Submit your work
+
+* Make sure you add, commit and push all your changes to your fork of this repo and pull request
+
 ## STRETCH
 
 Implement the data store using a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map)
