@@ -12,3 +12,22 @@ Write an Express app, that uses a file for persistent storage.
 * All file operations must be asynchronous
 * Your code must be perfectly indented.  If we can't read it, we aren't going to grade it.
 * Work in your project directory at all times
+
+## Part 1: Set up your npm/Express project
+
+1. Fork and clone this repo
+1. `touch app.js`
+1. `npm init -y`
+1. `npm install --save express`
+1. `echo node_modules > .gitignore`
+1. `git add .`
+1. `git commit -m "Initial project setup"`
+
+## Part : Set up nodemon and your npm scripts
+
+1. `npm install --save-dev nodemon`
+1. Open `package.json`
+1. Inside `scripts`
+  * add `"watch": "\`npm bin\`/nodemon"`
+  * make sure that you have the trailing commas in the right places!
+1. `npm run watch`
