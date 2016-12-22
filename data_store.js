@@ -12,7 +12,11 @@ module.exports={
     },
     get_book_by_id(id){
       let booksID = JSON.parse(globalBooks);
-      return booksID.find((item)=> item.id ===id)
-
+      let bookIf = booksID.find((item)=> item.id ===id)
+      if (bookIf===""){
+        return undefined
+      }else{
+        return bookIf
+      }
       }
   }

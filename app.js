@@ -19,5 +19,9 @@ res.send(books);
 app.get('/api/books/:id', jsonParse, (req,res)=>{
   let id = Number(req.params.id);
   let bookID = data.get_book_by_id(id);
+  if (bookID===undefined){
+    res.status(404).send("Oh man, try again.")
+  }else{
   res.send(bookID);
+  }
 });
