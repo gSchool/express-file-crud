@@ -134,3 +134,72 @@ Write an Express app, that uses a file for persistent storage.
 1. The route should send a json response with the book that has the given ID
   * use your data store's `get_book_by_id(id)` function to achieve this
 1. If there is no book with the given ID, respond with 404 Not Found
+
+## Part : Implement a function that updates the file with the current information
+
+1. Open `data_store.js`
+1. Write a function called `write_to_file` that writes all the books that are in memory, back into the file
+1. Make sure that you can read the data back out of the file by using `load_from_file`
+1. Do NOT export this function.
+  * This function is going to be a "private" or "secret" function that only your module can use
+1. Do NOT export the above-mentioned variable
+  * We want to restrict access to only the functions that we export
+
+## Part : Implement adding a new book (with a unique id) to the data store
+
+1. Open `data_store.js`
+1. Create a new global variable called `LAST_ID`
+1. When you call `load_from_file`, update `LAST_ID` to be the largest ID that was loaded from the file
+1. Write a function called `add_book` that:
+  * takes an object as a parameter
+  * gives it a unique ID
+    * *TIP:* just add 1 to `LAST_ID` and use that
+  * adds it to books that are already in memory
+  * calls `write_to_file` to update the file
+  * returns the added book (with its unique ID)
+1. Export this function
+
+## Part : Implement POST /api/books
+
+1. Install and use `body-parser`
+1. Get the body of the request and pass it to `add_book`
+1. The route should send a json response with the newly-created book
+
+## Part : Implement updating a book in the data store
+
+1. Open `data_store.js`
+1. Write a function called `update_book` that:
+  * takes an ID as a parameter
+  * takes an object as a parameter
+  * finds the book with that ID
+  * if it is not found, return `undefined`
+  * updates that book to have the information in the object
+  * do NOT update the ID
+  * calls `write_to_file` to update the file
+  * returns the updated book
+1. Export this function
+
+## Part : Implement PUT /api/books/:id
+
+1. Get the body of the request and pass it to `update_book`
+1. The route should send a json response with the newly-updated book
+1. If there is no book with the given ID, respond with 404 Not Found
+
+## Part : Implement deleting a book from the data store
+
+1. Open `data_store.js`
+1. Write a function called `delete_book` that:
+  * takes an ID as a parameter
+  * finds the book with that ID
+  * if it is not found, return `undefined`
+  * removes that book from the global variable
+  * calls `write_to_file` to update the file
+  * returns the removed book
+1. Export this function
+
+## Part : In app.js, implement DELETE /api/books/:id
+
+1. Define a DELETE route at /api/books/:id
+1. The route should send a json response with the book that was deleted
+  * use your data store's `delete_book` function to achieve this
+1. If there is no book with the given ID, respond with 404 Not Found
