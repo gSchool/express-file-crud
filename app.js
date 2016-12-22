@@ -1,3 +1,4 @@
+const data = require('/data_store')
 const express = require('express');
 const app = express();
 
