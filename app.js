@@ -38,3 +38,10 @@ app.put('/api/books/:id', jp, (req, res) => {
   let status = update ? 200 : 404;
   res.status(status).send(update);
 });
+
+app.delete('/api/books/:id', jp, (req, res) => {
+  let id = Number(req.params.id);
+  let del = ds.delete_book(id);
+  let status = del ? 200 : 404;
+  res.status(status).send(del);
+})
