@@ -21,17 +21,21 @@ module.exports = {
   get_book_by_id: (id) => {
     // Set checker var
     let checker = 0;
-    // Iterate through 
-    data_mem.forEach( (item) => {
+    // get books object
+    let books = JSON.parse(data_mem);
+    // define book sel
+    let book_sel;
+    // Iterate through
+    books.forEach( (item) => {
       if (item.id === id) {
         checker = 1;
-        return item.title;
+        book_sel = item.title;
       }
-    })
-
-    // Return undefined if none found by id
-    if (checker = 0) {
+    });
+    // If id DNE
+    if (checker === 0) {
       return undefined;
     }
+    return book_sel;
   }
 }
