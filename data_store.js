@@ -4,6 +4,8 @@ const fs = require('fs');
 
 // Global data var
 let data_mem;
+//Global last id var
+let LAST_ID;
 
 module.exports = {
   load_from_file: () => {
@@ -12,7 +14,14 @@ module.exports = {
         console.log(err);
       }
       // assigning the file contents to my global var
-      data_mem = file_contents;
+      data_mem = JSON.parse(file_contents);
+      let max_id = -1;
+      data_mem.map( (obj)=>{
+        if (obj.id > max_id) {
+          max_id = obj.id;
+        }
+      })
+      LAST_ID = max_id;
     })
   },
   get_all_books: () => {
@@ -40,6 +49,11 @@ module.exports = {
   }
 }
 
-write_to_file() => {
-  
+function write_to_file() {
+  fs.writeFile('data.json', data_mem, 'utf8', (err) => {
+    if (err) {
+      console.error(err);
+    }
+    console.log("Write to file complete!")
+  })
 }
