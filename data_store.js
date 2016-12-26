@@ -9,8 +9,6 @@ module.exports = {
     }
     obj = JSON.parse(data)
     console.log(`this shit is being loaded ${data}`);
-    console.log(obj.length);
-
   })
 },
 
@@ -24,7 +22,17 @@ module.exports = {
       return obj[i]
     }
   }
-  return undefined 
+  return undefined
+},
+
+write_to_file: (obj) => {
+  fs.writeFile('./db/data.json', 'utf-8', obj,  (err) => {
+    if(err){
+      throw err
+    }else {
+      console.log(`${file} Successful write to file`);
+    }
+  })
 },
 
 }
