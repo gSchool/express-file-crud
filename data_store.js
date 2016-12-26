@@ -2,6 +2,7 @@ const fs = require('fs')
 let books
 let LAST_ID = 0
 
+
 module.exports = {
   load_from_file: () => {
   fs.readFile('./db/data.json', 'utf-8', (err, data) => {
@@ -9,11 +10,11 @@ module.exports = {
       throw err
     }
     books = JSON.parse(data)
-    console.log(`this shit is being loaded ${data}`)
+    console.log(`this shit is being loaded: ${data}`)
     books.map(function(num){
       if (num.id > LAST_ID) LAST_ID = num.id
     })
-    console.log(LAST_ID);
+    console.log(`${LAST_ID} books in storage`);
   })
 },
 
@@ -30,21 +31,21 @@ module.exports = {
   return undefined
 },
 
-write_to_file: (obj) => {
-  fs.writeFile('./db/data.json', 'utf-8', obj,  (err) => {
-    if(err){
-      throw err
-    }else {
-      console.log(`${books} Successful write to file`);
-    }
-  })
-},
-
 add_book: (newBook) => {
   newBook.id = LAST_ID + 1
   books.push(newBook)
-  write_to_file(books)
+  write_to_file(JSON.stringify(books))
   return newBook
 }
 
+};
+
+function write_to_file(obj){
+  fs.writeFile('./db/data.json', obj, 'utf-8', (err) => {
+    if(err){
+      throw err
+    } else {
+      console.log(`${books} successfuly added`);
+    }
+  })
 }
