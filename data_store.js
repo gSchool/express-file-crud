@@ -28,7 +28,7 @@ module.exports = {
       return books[i]
     }
   }
-  return undefined
+  return "404 Not Found"
 },
 
 add_book: (newBook) => {
@@ -46,11 +46,12 @@ update_book: (id, updateBook) => {
       write_to_file(JSON.stringify(books))
       return books[i]
     }
+    return "404 Not Found"
   }
 },
 
 delete_book: (id) => {
-  let returnThis = []
+  let returnThis = "404 Not Found"
   for (var i = 0; i < books.length; i++) {
     if(id === books[i].id){
       returnThis = books[i]
