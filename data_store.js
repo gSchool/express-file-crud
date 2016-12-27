@@ -38,26 +38,25 @@ add_book: (newBook) => {
   return newBook
 },
 
-update_book: (id, obj) => {
-  for(i = 0; i < books.length; i++){
-    if(books[i].id === id){
-      books[i].push(obj)
+update_book: (id, updateBook) => {
+  for (var i = 0; i < books.length; i++) {
+    if(id === books[i].id){
+      books[i].author = updateBook.author
+      books[i].title = updateBook.title
+      write_to_file(JSON.stringify(books))
       return books[i]
-    } else {
-      return undefined
     }
   }
-  write_to_file(JSON.stringify(books)) 
 }
 
 };
 
 function write_to_file(obj){
-  fs.writeFile('./db/data.json', obj, 'utf-8', (err) => {
+  fs.writeFile('./db/data.json', obj, (err) => {
     if(err){
       throw err
     } else {
-      console.log(`${books} successfuly added`);
+      console.log(`updated ${obj}`)
     }
   })
 }
