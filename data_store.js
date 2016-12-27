@@ -50,15 +50,15 @@ update_book: (id, updateBook) => {
 },
 
 delete_book: (id) => {
+  let returnThis = []
   for (var i = 0; i < books.length; i++) {
     if(id === books[i].id){
-      delete books[i]
-      write_to_file(JSON.stringify(books))
-      return books[i]
-    } else {
-      return undefined
+      returnThis = books[i]
+      books.splice(i, i+1)
     }
   }
+  write_to_file(JSON.stringify(books))
+  return returnThis
 }
 
 };
@@ -67,8 +67,6 @@ function write_to_file(obj){
   fs.writeFile('./db/data.json', obj, (err) => {
     if(err){
       throw err
-    } else {
-      console.log(`updated ${obj}`)
     }
   })
 }
