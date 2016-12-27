@@ -14,7 +14,7 @@ module.exports = {
         console.log(err);
       }
       // assigning the file contents to my global var
-      data_mem = JSON.parse(file_contents); 
+      data_mem = JSON.parse(file_contents);
       let max_id = -1;
       data_mem.map( (obj)=>{
         if (obj.id > max_id) {
@@ -38,7 +38,7 @@ module.exports = {
     books.forEach( (item) => {
       if (item.id === id) {
         checker = 1;
-        book_sel = item.title;
+        book_sel = item;
       }
     });
     // If id DNE
@@ -54,6 +54,13 @@ module.exports = {
     data_mem.push(obj);
     write_to_file();
     return obj;
+  },
+  update_book: (id, obj) => {
+    let book_sel = get_book_by_id(id);
+    Object.assign(book_sel, obj);
+    obj.id = id;
+    write_to_file();
+    return book_sel;
   }
 }
 
