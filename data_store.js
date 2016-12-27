@@ -36,6 +36,18 @@ add_book: (newBook) => {
   books.push(newBook)
   write_to_file(JSON.stringify(books))
   return newBook
+},
+
+update_book: (id, obj) => {
+  for(i = 0; i < books.length; i++){
+    if(books[i].id === id){
+      books[i].push(obj)
+      return books[i]
+    } else {
+      return undefined
+    }
+  }
+  write_to_file(JSON.stringify(books)) 
 }
 
 };
