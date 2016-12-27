@@ -36,3 +36,9 @@ app.put('/api/books/:id', jsonParser, (req, res) => {
   let book = store.update_book(id, updateBook)
   res.send(book)
 })
+
+app.delete('/api/books/:id', jsonParser, (req, res) => {
+  let id = Number(req.params.id)
+  let book = store.delete_book(id)
+  res.send(book)
+})
