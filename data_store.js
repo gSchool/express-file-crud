@@ -14,7 +14,7 @@ module.exports = {
         console.log(err);
       }
       // assigning the file contents to my global var
-      data_mem = JSON.parse(file_contents);
+      data_mem = JSON.parse(file_contents); 
       let max_id = -1;
       data_mem.map( (obj)=>{
         if (obj.id > max_id) {
@@ -31,7 +31,7 @@ module.exports = {
     // Set checker var
     let checker = 0;
     // get books object
-    let books = JSON.parse(data_mem);
+    let books = data_mem;
     // define book sel
     let book_sel;
     // Iterate through
@@ -45,12 +45,21 @@ module.exports = {
     if (checker === 0) {
       return undefined;
     }
+    // Return selected book
     return book_sel;
+  },
+  add_book: (obj) => {
+    let id = LAST_ID + 1;
+    obj.id = id;
+    data_mem.push(obj);
+    write_to_file();
+    return obj;
   }
 }
 
 function write_to_file() {
-  fs.writeFile('data.json', data_mem, 'utf8', (err) => {
+  let data_memory = JSON.stringify(data_mem);
+  fs.writeFile('db/data.json', data_memory, 'utf8', (err) => {
     if (err) {
       console.error(err);
     }
