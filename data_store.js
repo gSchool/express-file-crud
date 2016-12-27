@@ -47,6 +47,18 @@ update_book: (id, updateBook) => {
       return books[i]
     }
   }
+},
+
+delete_book: (id) => {
+  for (var i = 0; i < books.length; i++) {
+    if(id === books[i].id){
+      delete books[i]
+      write_to_file(JSON.stringify(books))
+      return books[i]
+    } else {
+      return undefined
+    }
+  }
 }
 
 };
