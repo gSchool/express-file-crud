@@ -44,3 +44,13 @@ app.post('/api/books', jsonParser, (req, res) => {
   data_store.add_book(new_book);
   res.send(new_book);
 })
+
+// PUT api/books/:id
+app.put('/api/books/:id', jsonParser, (req, res) => {
+  if (!req.body) return res.sendStatus(404);
+  let body = req.body;
+  let id = Number(req.params.id);
+  // data_store.update_book(id, body);
+  let updated_book = data_store.update_book(id, body);
+  res.send(updated_book);
+})

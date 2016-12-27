@@ -56,7 +56,24 @@ module.exports = {
     return obj;
   },
   update_book: (id, obj) => {
-    let book_sel = get_book_by_id(id);
+    // Set checker var
+    let checker = 0;
+    // get books object
+    let books = data_mem;
+    // define book sel
+    let book_sel;
+    // Iterate through
+    books.forEach( (item) => {
+      if (item.id === id) {
+        checker = 1;
+        book_sel = item;
+      }
+    });
+    // If id DNE
+    if (checker === 0) {
+      return undefined;
+    }
+
     Object.assign(book_sel, obj);
     obj.id = id;
     write_to_file();
