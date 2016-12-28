@@ -98,9 +98,6 @@ module.exports = {
       return undefined;
     }
 
-    for (let i = 0; i < books.length; i++) {
-
-    }
     let index = books.indexOf(book_sel);
     data_mem.splice(index, 1);
     write_to_file();
