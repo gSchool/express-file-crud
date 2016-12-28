@@ -78,6 +78,31 @@ module.exports = {
     obj.id = id;
     write_to_file();
     return book_sel;
+  },
+  delete_book: (id) => {
+    // Set checker var
+    let checker = 0;
+    // get books object
+    let books = data_mem;
+    // define book sel
+    let book_sel;
+    // Iterate through
+    books.forEach( (item) => {
+      if (item.id === id) {
+        checker = 1;
+        book_sel = item;
+      }
+    });
+    // If id DNE
+    if (checker === 0) {
+      return undefined;
+    }
+
+    let index = books.indexOf(book_sel);
+    data_mem.splice(index, 1);
+    write_to_file();
+    return book_sel;
+
   }
 }
 
