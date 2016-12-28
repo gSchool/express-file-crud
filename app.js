@@ -50,7 +50,14 @@ app.put('/api/books/:id', jsonParser, (req, res) => {
   if (!req.body) return res.sendStatus(404);
   let body = req.body;
   let id = Number(req.params.id);
-  // data_store.update_book(id, body);
   let updated_book = data_store.update_book(id, body);
   res.send(updated_book);
+})
+
+// DELETE api/books/:id
+app.delete('/api/books/:id', jsonParser, (req, res) => {
+  if(!req.body) return res.sendStatus(404);
+  let id = Number(req.params.id);
+  let deleted = data_store.delete_book(id);
+  res.send(deleted);
 })

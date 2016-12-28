@@ -102,7 +102,6 @@ module.exports = {
     data_mem.splice(index, 1);
     write_to_file();
     return book_sel;
-
   }
 }
 
