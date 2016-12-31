@@ -1,7 +1,10 @@
+'use strict';
+
 const fs = require('fs');
 var glob_var;
 var book_list = [];
 
+<<<<<<< HEAD
 // function readContent(callback) {
 //     fs.readFile("./Index.html", function (err, content) {
 //         if (err) return callback(err)
@@ -66,3 +69,26 @@ module.exports = {
 //   }
 //   return book_list;
 // }
+=======
+
+
+module.exports = {
+  load_from_file: () => {
+    fs.readFile('./db/seed.json', 'utf8', function read(err, data) {
+      if (err) {
+        throw err;
+      } else {
+        glob_var = data;
+        console.log("This is inside the module.exports function")
+
+      }
+    })
+  },
+
+  get_all_books: () => {
+    return global_var;
+  }
+
+
+}
+>>>>>>> get_function_branch
