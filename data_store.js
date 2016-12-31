@@ -1,5 +1,6 @@
 const fs = require('fs');
 var glob_var;
+var book_list = [];
 
 // function readContent(callback) {
 //     fs.readFile("./Index.html", function (err, content) {
@@ -33,22 +34,35 @@ var glob_var;
 
 // exports.load_from_file = to_be_called();
 
-
-exports.load_from_file = load_from_file();
-
-function load_from_file() {
-    let x = fs.readFile('./db/seed.json','utf8', function read(err, data) {
+module.exports = {
+  load_from_file: function() {
+    fs.readFile('./db/seed.json','utf8', function read(err, data) {
       if (err) {
         throw err;
       } else {
-
-    glob_var = data;
-    console.log("This is inside the module.exports")
-    console.log(glob_var);
+          glob_var = data;
+          console.log("This is inside the module.exports")
+          console.log(glob_var);
+          return glob_var;
+        }
+      })
+    }
+  get_all_books: function() {
     return glob_var;
-      }
-    });
-    console.log("This is inside exports")
-    console.log(x)
-    return glob_var
-}
+  }
+
+
+  }
+
+
+
+
+// exports.get_all_books = get_all_books();
+//
+// function get_all_books() {
+//   for(i of data) {
+//     book_list.push(data[i].title)
+//
+//   }
+//   return book_list;
+// }

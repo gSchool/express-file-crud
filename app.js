@@ -9,10 +9,11 @@ const port = 8000;
 
 
 
-let data = data_store.load_from_file;
+var new_data = [1,2];
 
+new_data= data_store.load_from_file();
 console.log("This is in app.js")
-console.log(data);
+console.log(new_data)
 
 
 
