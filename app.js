@@ -1,4 +1,4 @@
-
+'use strict';
 
 const express = require('express');
 const app = express();
@@ -21,4 +21,9 @@ console.log(data);
 
 app.listen(port, function () {
   console.log("Hello World")
+});
+
+
+app.get('/api/books', function (req,res) {
+   res.send(data_store.get_all_books());
 });
