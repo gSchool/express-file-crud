@@ -21,4 +21,9 @@ var bookArray = app.get('/api/books', (req, res) => { //app is express: app.get(
   // to check: in console type: http GET localhost:3000/api/books
 });
 
-console.log(storeMod.get_all_books() ); // this doesn't work bc it needs to get the info
+var getById = app.get('api/books/:id', (req, res) => {
+  let id = Number(req.params.id);
+  res.send(storeMod.get_book_by_id(id));
+});
+
+// console.log(storeMod.get_all_books() ); // this doesn't work bc it needs to get the info
