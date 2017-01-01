@@ -27,7 +27,15 @@ module.exports = {  //This is exporting a function (also could do module.exports
          return "undefined";
   },
 
-  write_to_file: () =>
+  write_to_file: (dataArray) => {  //fs.writeFile(filePath, data[, options], callback)
+    fs.writeFile('.db/data.json', 'utf8', dataArray, (err) => {
+      if (err) {
+        throw err;
+      } else {
+        console.log(`${file} written successfully`);
+      }
+    });
+  }
 
 };
 
