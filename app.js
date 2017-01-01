@@ -16,16 +16,17 @@ data_store.load_from_file();
 
 
 
-
+// THIS FUNCTION WILL LISTEN FOR THE PORT
 app.listen(port, function () {
   console.log("Hello World")
 });
 
-
+// THIS FUNCTION WILL SEND THE INFO FROM get_all_books
 app.get('/api/books', function (req,res) {
    res.send(data_store.get_all_books());
 });
 
+// THIS FUNCTION WILL SEND THE TITLE OF BOOK BY ID USING get_book_by_id
 app.get('/api/books/:id', function(req,res) {
   let id = req.params.id
     if(id === undefined) {
