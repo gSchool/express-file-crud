@@ -4,9 +4,10 @@ const fs = require('fs');
 // const json_parser =body_parser.json();
 let global = null;
 
+
 module.exports = {
   load_from_file () {
-    fs.readFile("./db/data.json", "utf-8", function(err, data) {
+    fs.readFile("./db/data.json", "utf-8", (err, data) => {
       if (err) {
         throw err;
       }
@@ -23,4 +24,13 @@ module.exports = {
     let book = books.find((element) => element.id === id);
     return book;
   }
+}
+
+function write_to_file() {
+  fs.writeFile("./db/data.json", global, "utf-8", (err) => {
+    if(err) {
+      console.error(err);
+    }
+    console.log("wrote to file");
+  })
 }
