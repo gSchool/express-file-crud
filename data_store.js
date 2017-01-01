@@ -9,7 +9,7 @@ var book_list = [];
 
 module.exports = {
   load_from_file: () => {
-    fs.readFile('./db/seed.json', 'utf8', function read(err, data) {
+    fs.readFile('./db/data.json', 'utf8', function read(err, data) {
       if (err) {
         throw err;
       } else {
@@ -25,14 +25,14 @@ module.exports = {
   },
 
   get_book_by_id: function(id) {
-    for(i=0; i<global_var.length; i++) {
-      if (id = global_var[i].id) {
+    for(var i=0; i<global_var.length; i++) {
+      if (id === global_var[i].id) {
         return global_var[i].title;
-      } else {
-        return undefined;
       }
+      }
+      return undefined;
     }
-  }
+
 
 
 }

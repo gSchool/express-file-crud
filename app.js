@@ -7,13 +7,10 @@ const data_store = require('./data_store')
 const port = 8000;
 
 
+var id;
+var book_Array = [];
 
-
-var new_data = [1,2];
-
-new_data= data_store.load_from_file();
-console.log("This is in app.js")
-console.log(new_data)
+data_store.load_from_file();
 
 
 
@@ -28,3 +25,13 @@ app.listen(port, function () {
 app.get('/api/books', function (req,res) {
    res.send(data_store.get_all_books());
 });
+
+app.get('/api/books/:id', function(req,res) {
+  let id = req.params.id
+    if(id === undefined) {
+      res.status(404).send("Not found")
+    } else {
+      let number = Number(id)
+      res.send(data.store.get_books_by_id(number))
+    }
+    }
