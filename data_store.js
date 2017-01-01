@@ -18,14 +18,16 @@ module.exports = {  //This is exporting a function (also could do module.exports
     return dataArray;  //probably always need to return something, otherwise theres nothing to access in other file
   },
 
-  get_book_by_id: function(id) {
+  get_book_by_id: (id) => {
     for (var i = 0; i < dataArray.length; i++) {
        if (dataArray[i].id === id) {
          return dataArray[i].title;
        }
     }
          return "undefined";
-  }
+  },
+
+  write_to_file: () =>
 
 };
 
