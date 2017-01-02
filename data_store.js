@@ -84,8 +84,12 @@ module.exports = {  //This is exporting a function (also could do module.exports
       if (dataArray[i].id === id) {
         dataArray.splice(i, 1);
         console.log(dataArray);
+      } else {
+        return undefined;
       }
     }
+    write_to_file(dataArray[i]);
+    return dataArray[i];
   }
   // calls write_to_file to update the file
   // returns the removed book
