@@ -50,7 +50,7 @@ module.exports = {  //This is exporting a function (also could do module.exports
   add_book: (newBook) => {
     LAST_ID = LAST_ID + 1; //gives it unique id (just add 1 to LAST_ID)
     dataArray.push(newBook); //adds it to books already in memory
-    write_to_file(); //calls write_to_file to update file
+    write_to_file(dataArray); //calls write_to_file to update file
     return newBook; //returns the new book (with its unique ID)
   }
 
@@ -58,14 +58,3 @@ module.exports = {  //This is exporting a function (also could do module.exports
 };
 
 console.log("working");
-
-// Copied from repl-check
-// function get_book_by_id(id) {
-//   for (var i = 0; i < dataArray.length; i++) {
-//      if (dataArray[i].id === id) {
-//        return dataArray[i].title;
-//      }
-//   }
-//        return "undefined";
-//
-//   }
