@@ -52,7 +52,28 @@ module.exports = {  //This is exporting a function (also could do module.exports
     dataArray.push(newBook); //adds it to books already in memory
     write_to_file(dataArray); //calls write_to_file to update file
     return newBook; //returns the new book (with its unique ID)
+  },
+
+  update_book: (id, obj) => {
+// takes an ID as a parameter
+// takes an object as a parameter
+// finds the book with that ID
+// updates that book to have the information in the object
+// do NOT update the ID
+
+  for (var i = 0; i < dataArray.length; i++) {
+    if (dataArray[i].id === id) {
+      dataArray[i].title = obj.title;
+      dataArray[i].author = obj.author;
+    } else {
+    return undefined; // if it is not found, return undefined
   }
+    write_to_file(dataArray[i]);
+    return dataArray[i];
+// calls write_to_file to update the file
+// returns the updated book
+  }
+}
 
 
 };
