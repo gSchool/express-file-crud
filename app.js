@@ -3,9 +3,15 @@ const app = express()
 const port = 8000
 const dataStore = require('./data_store')
 
-const store =
-dataStore()
-// console.log(store);
+var store = ""
+ dataStore.load_from_file((data)=>{
+   store = data
+ })
+ console.log(store);
+app.get("/",(req,res)=>{
+  res.send(store)
+})
+
 
 
 
