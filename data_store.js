@@ -1,8 +1,7 @@
 const path = require('path');
 const fs = require('fs');
-// const body_parser = require('body-parser');
-// const json_parser =body_parser.json();
 let global = null;
+let LAST_ID;
 
 
 module.exports = {
@@ -11,7 +10,8 @@ module.exports = {
       if (err) {
         throw err;
       }
-      global = data;
+      global = JSON.parse(data);
+      LAST_ID = Math.max.apply(Math, global.map(global => global.id));
     })
   },
 
@@ -20,14 +20,20 @@ module.exports = {
   },
 
   get_book_by_id(id) {
-    let books = JSON.parse(global);
-    let book = books.find((element) => element.id === id);
+    let book = global.find((element) => element.id === id);
     return book;
+  },
+
+  add_book(obj) {
+    obj.id = LAST_ID + 1;
+    global.push(obj);
+    write_to_file();
+    return obj;
   }
 }
 
 function write_to_file() {
-  fs.writeFile("./db/data.json", global, "utf-8", (err) => {
+  fs.writeFile("./db/data.json", JSON.stringify(global), "utf-8", (err) => {
     if(err) {
       console.error(err);
     }
