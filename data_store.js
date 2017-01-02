@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let data_mem = null;
+let data_mem;
 
 module.exports = {
   load_from_file: function() {
@@ -12,5 +12,9 @@ module.exports = {
       data_mem = data;
       console.log(data_mem);
     })
-  }
+  },
+   get_all_books: () => {
+     return data_mem;
+   }
+
 }
