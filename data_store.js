@@ -13,7 +13,7 @@ module.exports = {
   load_from_file: () => {
     fs.readFile('./db/data.json', 'utf8', function read(err, data) {
       if (err) {
-        throw err;
+        console.log(err);
       } else {
         glob_var = data;
         for(let i=0; i<glob_var.length; i++) {
@@ -56,9 +56,28 @@ module.exports = {
     write_to_file(glob_var);
     //return book with id
     return new_book;
-  }   // This closes add_book function
+  },   // This closes add_book function
 
 
+// THIS FUNCTION UPDATES A BOOK IN DATA STORE
+  update_book: function(ID, obj) {
+    //finds book with that ID
+    for(let i=0; i<glob_var.length; i++) {
+      if(ID === glob_var[i].id) {
+        //updates book with info in OBJECTS
+        glob_var[i].title = obj.title;
+        glob_var[i].author = obj.author;
+        //do not update ID
+      } else {
+        //if ID not found return undefined
+        return undefined;
+      }
+      //call write_to_file
+      write_to_file(glob_var[i]);
+      //return updated book
+      return glob_var[i];
+    }
+  }  // This closes update_book function
 
 
 
@@ -71,7 +90,7 @@ module.exports = {
 function write_to_file(glob_var) {
   fs.writeFile('./db/data.json', 'utf8', glob_var, function write(err,data) {
     if(err) {
-      throw err;
+      console.log(err);
     }
     console.log(data);
   })

@@ -3,6 +3,7 @@
 const express = require('express');
 const app = express();
 const data_store = require('./data_store')
+const body_parser = require('body-parser')
 
 const port = 8000;
 
@@ -11,10 +12,6 @@ var id;
 var book_Array = [];
 
 data_store.load_from_file();
-
-
-
-
 
 // THIS FUNCTION WILL LISTEN FOR THE PORT
 app.listen(port, function () {
@@ -39,4 +36,10 @@ app.get('/api/books/:id', function(req,res) {
     }
   }); //This close app.get
 
-  
+
+ // POST A JSON REQUEST OF NEW BOOK
+ app.post('/api/books',express.body_parser, function(req, res) {
+   //get body of request and send it to add_book
+   //route should send a json response with the newly created book
+   res.send(data_store.add_book(req.body))
+  });  // This closes app.POST
