@@ -44,6 +44,19 @@ module.exports = {
       write_to_file();
       return book;
     }
+  },
+
+  delete_book(id) {
+    let idx;
+    let book = global.find((element, index) => {
+      idx = index;
+      return element.id === id;
+    })
+    if (book) {
+      global.splice(idx, 1);
+      write_to_file();
+    }
+    return book;
   }
 }
 

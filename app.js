@@ -42,6 +42,17 @@ app.put('/api/books/:id', jsonParser, (req, res) => {
   res.send(success);
 })
 
+app.delete('/api/books/:id', jsonParser, (req, res) => {
+  let id = Number(req.params.id);
+  let success = dataStore.delete_book(id);
+  if (success) {
+    res.send(success);
+  }
+  else {
+    res.sendStatus(404);
+  }
+})
+
 app.listen(port, function() {
     console.log("Listening on port: ",port);
 })
