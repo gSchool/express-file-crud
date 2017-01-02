@@ -42,4 +42,21 @@ app.get('/api/books/:id', function(req,res) {
    //get body of request and send it to add_book
    //route should send a json response with the newly created book
    res.send(data_store.add_book(req.body))
-  });  // This closes app.POST
+ });  // This closes app.post new book
+
+
+  // POST A JSON REQUEST OF UPDATED BOOK
+  app.post('/api/books/:id', express.body_parser, function(req, res) {
+    //if no book with the given id respond with 404 not found
+    let id = req.params.id
+      if(id === undefined) {
+        res.status(404).send("Not found")
+      } else {
+        //get body of request and pass to update_book
+        //route should send a json response with newly update book
+        res.send(data_store.update.book(req.body))
+      }
+  });  // This closes app.post update book
+
+
+  
