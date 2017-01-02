@@ -9,18 +9,15 @@ dataStore.load_from_file();
 
 app.get('/api/books', (req, res) => {
   let data = dataStore.get_all_books();
-  res.send(data);
+  let code = data ? 200 : 400;
+  res.status(code).send(data);
 })
 
 app.get('/api/books/:id', (req, res) => {
   let id = Number(req.params.id);
   let book = dataStore.get_book_by_id(id);
-  if (book) {
-    res.send(book);
-  }
-  else {
-    res.sendStatus(404);
-  }
+  let code = book ? 200 : 400;
+  res.status(code).send(book);
 })
 
 app.post('/api/books/', jsonParser, (req, res) => {
@@ -31,28 +28,26 @@ app.post('/api/books/', jsonParser, (req, res) => {
     title: ""
   }
   Object.assign(newBook, req.body);
-  let success = dataStore.add_book(newBook);
-  res.send(success);
+  let book = dataStore.add_book(newBook);
+  let code = book ? 200 : 400;
+  res.status(code).send(book);
 })
 
 app.put('/api/books/:id', jsonParser, (req, res) => {
   let id = Number(req.params.id);
   if (!req.body) return res.sendStatus(404);
-  let success = dataStore.update_book(id, req.body);
-  res.send(success);
+  let book = dataStore.update_book(id, req.body);
+  let code = book ? 200 : 400;
+  res.status(code).send(book);
 })
 
 app.delete('/api/books/:id', jsonParser, (req, res) => {
   let id = Number(req.params.id);
-  let success = dataStore.delete_book(id);
-  if (success) {
-    res.send(success);
-  }
-  else {
-    res.sendStatus(404);
-  }
+  let book = dataStore.delete_book(id);
+  let code = book ? 200 : 400;
+  res.status(code).send(book);
 })
 
 app.listen(port, function() {
-    console.log("Listening on port: ",port);
+    console.log(`Listening on port: ${port}.`);
 })

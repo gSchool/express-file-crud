@@ -1,8 +1,6 @@
-const path = require('path');
 const fs = require('fs');
 let global = null;
 let LAST_ID;
-
 
 module.exports = {
   load_from_file () {
@@ -66,6 +64,6 @@ function write_to_file() {
     if(err) {
       console.error(err);
     }
-    console.log("wrote to file");
+    console.log("Wrote to file.");
   })
 }
