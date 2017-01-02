@@ -75,11 +75,18 @@ module.exports = {  //This is exporting a function (also could do module.exports
     }
   },
 
-  delete_book: () => {}
+  delete_book: (id) => {
   // takes an ID as a parameter
   // finds the book with that ID
   // if it is not found, return undefined
   // removes that book from the global variable
+    for (var i = 0; i < dataArray.length; i++) {
+      if (dataArray[i].id === id) {
+        dataArray.splice(i, 1);
+        console.log(dataArray);
+      }
+    }
+  }
   // calls write_to_file to update the file
   // returns the removed book
 

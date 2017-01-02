@@ -39,5 +39,9 @@ app.post('api/books', bodyParser.json(), (req, res) => { //https://github.com/ex
 app.put('api/books/:id', bodyParser.json(), (req,res) =>{
   let body = req.body; // req.body is your array of objects now (http://stackoverflow.com/questions/18087696/express-framework-app-post-and-app-get)
   let id = Number(req.params.id);
-  res.send(storeMod.update_book(id, body));
+  if (body === undefined) {
+    res.status(404).send("Not found.");
+  } else { //need the else?
+    res.send(storeMod.update_book(id, body));
+  }
 });
