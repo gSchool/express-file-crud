@@ -45,8 +45,8 @@ app.get('/api/books/:id', function(req,res) {
  });  // This closes app.post new book
 
 
-  // POST A JSON REQUEST OF UPDATED BOOK
-  app.post('/api/books/:id', express.body_parser, function(req, res) {
+  // PUT A JSON REQUEST OF UPDATED BOOK
+  app.put('/api/books/:id', function(req, res) {
     //if no book with the given id respond with 404 not found
     let id = req.params.id
       if(id === undefined) {
@@ -57,6 +57,3 @@ app.get('/api/books/:id', function(req,res) {
         res.send(data_store.update.book(req.body))
       }
   });  // This closes app.post update book
-
-
-  

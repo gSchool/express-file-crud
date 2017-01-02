@@ -77,8 +77,19 @@ module.exports = {
       //return updated book
       return glob_var[i];
     }
-  }  // This closes update_book function
+  },  // This closes update_book function
 
+// THIS FUNCTION DELETES A BOOK IN DATA STORE
+  delete_book: function(ID) {
+    for(let i=0; i<glob_var[i].length; i++) {
+      if(ID === glob_var[i].id) {
+        glob_var= glob_var.slice(i)
+      } else {
+        return undefined;
+        }
+      write_to_file(glob_var[i]);
+      return glob_var[i];
+  }   // This closes delete_book function
 
 
 } //This is closing module.exports
