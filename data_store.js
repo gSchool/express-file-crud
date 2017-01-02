@@ -6,14 +6,26 @@ var book_list = [];
 var last_id =0;
 
 
+//  SECRET FUNCTIONS....SECRET FUNCTIONS...SECRET FUNCTIONS
+// THIS FUNCTION WRITES ALL global_var OBJECTS TO FILE
+function write_to_file() {
+  fs.writeFile('./db/data.json', 'utf8', glob_var, function write(err,data) {
+    if(err) {
+      throw err;
+    }
+    console.log(data);
+  })
+} // This closes write_to_file
+
 
 
 module.exports = {
+
   // THIS FUNCTION LOADS DATA INTO glob_var
   load_from_file: () => {
     fs.readFile('./db/data.json', 'utf8', function read(err, data) {
       if (err) {
-        console.log(err);
+        throw err;
       } else {
         glob_var = data;
         for(let i=0; i<glob_var.length; i++) {
@@ -22,16 +34,17 @@ module.exports = {
           }
         }
         console.log("This is inside the module.exports function")
-
       }
     })
   },  //This closes load_from_file function
+
 
 
 // THIS FUNCTION GETS ALL BOOK OBJECTS
   get_all_books: () => {
     return glob_var;
   },  //This closes get_all_books function
+
 
 
 // THIS FUNCTION GETS BOOK TITLE BY BOOK ID
@@ -43,6 +56,7 @@ module.exports = {
     }
       return undefined;
     },  // This closes get_books_by_id function
+
 
 
 // THIS FUNCTION ADDS A NEW BOOK TO data_store
@@ -57,6 +71,7 @@ module.exports = {
     //return book with id
     return new_book;
   },   // This closes add_book function
+
 
 
 // THIS FUNCTION UPDATES A BOOK IN DATA STORE
@@ -79,30 +94,20 @@ module.exports = {
     }
   },  // This closes update_book function
 
+
+
 // THIS FUNCTION DELETES A BOOK IN DATA STORE
   delete_book: function(ID) {
     for(let i=0; i<glob_var[i].length; i++) {
       if(ID === glob_var[i].id) {
-        glob_var= glob_var.slice(i)
+        glob_var.slice(i)
       } else {
         return undefined;
         }
       write_to_file(glob_var[i]);
       return glob_var[i];
+    }
   }   // This closes delete_book function
 
 
 } //This is closing module.exports
-
-
-
-//  SECRET FUNCTIONS....SECRET FUNCTIONS...SECRET FUNCTIONS
-// THIS FUNCTION WRITES ALL global_var OBJECTS TO FILE
-function write_to_file(glob_var) {
-  fs.writeFile('./db/data.json', 'utf8', glob_var, function write(err,data) {
-    if(err) {
-      console.log(err);
-    }
-    console.log(data);
-  })
-} // This closes write_to_file
