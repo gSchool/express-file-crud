@@ -35,6 +35,12 @@ app.post('/api/books/', jsonParser, (req, res) => {
   res.send(success);
 })
 
+app.put('/api/books/:id', jsonParser, (req, res) => {
+  let id = Number(req.params.id);
+  if (!req.body) return res.sendStatus(404);
+  let success = dataStore.update_book(id, req.body);
+  res.send(success);
+})
 
 app.listen(port, function() {
     console.log("Listening on port: ",port);

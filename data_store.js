@@ -29,8 +29,24 @@ module.exports = {
     global.push(obj);
     write_to_file();
     return obj;
+  },
+
+  update_book(id, obj) {
+    delete obj.id;
+    let book = global.find((element) => element.id === id);
+    if (book) {
+      global.forEach((element) => {
+        if (element.id === id) {
+          Object.assign(element, obj);
+          book = element;
+        }
+      })
+      write_to_file();
+      return book;
+    }
   }
 }
+
 
 function write_to_file() {
   fs.writeFile("./db/data.json", JSON.stringify(global), "utf-8", (err) => {
