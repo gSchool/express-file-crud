@@ -13,8 +13,19 @@ module.exports = {
       console.log(data_mem);
     })
   },
-   get_all_books: () => {
-     return data_mem;
-   }
+  get_all_books: () => {
+    return data_mem;
+  },
+  get_book_by_id: (id) => {
+    let check = 0;
+    data.mem.forEach( (book_id) => {
+      if(book_id.id === id) {
+        check = 1
+      }
+      else {
+        return undefined;
+      }
+    })
+  }
 
 }
