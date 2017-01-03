@@ -4,6 +4,8 @@ const arg1 = process.argv[2];
 //determine port
 const arg2 = process.argv[3] ? Number(process.argv[3]) : 8000;
 const data_store = require('./data_store');
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 data_store.load_from_file();
 
@@ -32,5 +34,17 @@ app.get('/api/books/:id', (req, res) => {
     res.status(404).send('Book not found.');
   } else {
     res.send(book);
+  }
+});
+
+app.post('/api/books', jsonParser, (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  if (req.body !== undefined) {
+    let new_book = req.body;
+    data_store.add_book(new_book);
+    let stringified = JSON.stringify(new_book);
+    res.send(stringified);
+  } else {
+    res.status(400).send('Invalid request.');
   }
 });
