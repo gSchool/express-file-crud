@@ -22,3 +22,15 @@ app.get('/api/books', (req, res) => {
     res.send(books);
   }
 });
+
+app.get('/api/books/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let book = data_store.get_book_by_id(id);
+  res.setHeader('Content-Type', 'application/json');
+  if (book === undefined) {
+    //return 404
+    res.status(404).send('Book not found.');
+  } else {
+    res.send(book);
+  }
+});
