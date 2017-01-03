@@ -64,3 +64,14 @@ app.put('/api/books/:id', jsonParser, (req, res) => {
     res.status(400).send('Request invalid.');
   }
 });
+
+app.delete('/api/books/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let deleted_book = data_store.delete_book(id);
+  if (deleted_book) {
+    let stringified = JSON.stringify(deleted_book);
+    res.status(200).send(stringified);
+  } else {
+    res.status(404).send('Book not found');
+  }
+});
