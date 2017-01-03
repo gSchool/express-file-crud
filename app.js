@@ -17,3 +17,14 @@ app.get('/api/books', (req, res) => {
   let books = data_store.get_all_books();
   res.send(books);
 })
+
+app.get('/api/books/:id', (req, res) => {
+  let id = Number(req.params.id);
+  let book = data_store.get_book_by_id(id);
+  if (book) {
+    res.send(book)
+  }
+  else {
+    res.sendStatus(404);
+  }
+})
