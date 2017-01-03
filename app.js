@@ -48,3 +48,19 @@ app.post('/api/books', jsonParser, (req, res) => {
     res.status(400).send('Invalid request.');
   }
 });
+
+app.put('/api/books/:id', jsonParser, (req, res) => {
+  let id = Number(req.params.id);
+  if (req.body !== undefined) {
+    let u_book = req.body;
+    let upped_book = data_store.update_book(id, u_book);
+    if (upped_book) {
+      let stringified = JSON.stringify(upped_book);
+      res.status(200).send(stringified);
+    } else {
+      res.status(404).send('Book not found');
+    }
+  } else {
+    res.status(400).send('Request invalid.');
+  }
+});

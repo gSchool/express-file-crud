@@ -2,7 +2,7 @@ let loaded_data = [];
 let LAST_ID = null;
 const fs = require('fs');
 
-module.exports.load_from_file = () => {
+function load_from_file() {
   //loaded_data should read in contents of db/data.json
   fs.readFile('./db/data.json', 'utf8', (err, data) => {
     if (err) throw err;
@@ -15,12 +15,12 @@ module.exports.load_from_file = () => {
   });
 };
 
-module.exports.get_all_books = () => {
+function get_all_books() {
   //returns an array of all books in memory
   return loaded_data;
 };
 
-module.exports.get_book_by_id = (id) => {
+function get_book_by_id(id) {
   for (let i in loaded_data) {
     if (loaded_data[i].id === id) {
       //returns book matching id
@@ -29,7 +29,25 @@ module.exports.get_book_by_id = (id) => {
   }
 };
 
-module.exports.add_book = (obj) => {
+function update_book(id, obj) {
+  let book_to_update = get_book_by_id(id);
+  if (book_to_update) {
+    //get keys from update object
+    for (keys in obj) {
+      book_to_update[keys] = obj[keys];
+    }
+    //update data
+    for (let i in loaded_data) {
+      if (loaded_data[i].id === id) {
+        loaded_data[i] = book_to_update;
+      }
+    }
+    write_to_file();
+  }
+  return book_to_update;
+};
+
+function add_book(obj) {
   obj.id = ++LAST_ID;
   loaded_data.push(obj);
   write_to_file();
@@ -41,4 +59,12 @@ function write_to_file() {
   fs.writeFile('./db/data.json', data_string, (err) => {
     if (err) throw err;
   });
+};
+
+module.exports = {
+  add_book: add_book,
+  get_all_books: get_all_books,
+  get_book_by_id: get_book_by_id,
+  load_from_file: load_from_file,
+  update_book: update_book
 };
