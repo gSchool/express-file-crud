@@ -16,7 +16,7 @@ module.exports = {
         return err;
       }
       data_mem = JSON.parse(data)
-      console.log(data_mem);
+      // console.log(data_mem);
 
       // Assigns LAST_ID
       for (let i = 0; i < data_mem.length; i++) {
@@ -29,6 +29,7 @@ module.exports = {
 
   // Gets the book object
   get_all_books: () => {
+    console.log(data_mem)
     return data_mem;
   },
 

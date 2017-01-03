@@ -4,10 +4,6 @@ const data_store = require('./data_store.js');
 const bodyParser = require('body-parser');
 
 
-app.use(function(req, res) {
-  res.send('Listening on port 4000');
-})
-
 data_store.load_from_file();
 
 app.listen(4000, function() {
