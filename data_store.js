@@ -50,6 +50,7 @@ module.exports = {
     return obj;
   },
 
+  // Update book
   update_book: (id, obj) => {
     for (let i = 0; i < data_mem.length; i++) {
       if (id === data_mem[i].id) {
@@ -57,12 +58,27 @@ module.exports = {
         data_mem[i].title = obj.author;
       }
       else {
-        return 'undefined';
+        return undefined;
       }
       write_to_file(data_mem[i])
       return data_mem[i]
     }
+  },
+
+  // Deletes book
+  delete_book: (id) => {
+    for (let i = 0; i < data_mem.length; i++) {
+      if (id === data_mem[i].id) {
+        data_mem.slice(i);
+      }
+      else {
+        return undefined;
+      }
+      write_to_file(data_mem[i]);
+      return data_mem[i];
+    }
   }
+
 
 
 } //End of export
