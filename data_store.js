@@ -69,13 +69,14 @@ module.exports = {
   delete_book: (id) => {
     for (let i = 0; i < data_mem.length; i++) {
       if (id === data_mem[i].id) {
-        data_mem.slice(i);
+        let del = data_mem[i];
+        data_mem.slice(i,1);
       }
       else {
         return undefined;
       }
-      write_to_file(data_mem[i]);
-      return data_mem[i];
+      write_to_file(data_mem);
+      return del;
     }
   }
 
