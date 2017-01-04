@@ -48,6 +48,20 @@ module.exports = {
     data_mem.push(obj);
     write_to_file();
     return obj;
+  },
+
+  update_book: (id, obj) => {
+    for (let i = 0; i < data_mem.length; i++) {
+      if (id === data_mem[i].id) {
+        data_mem[i].author = obj.author;
+        data_mem[i].title = obj.author;
+      }
+      else {
+        return 'undefined';
+      }
+      write_to_file(data_mem[i])
+      return data_mem[i]
+    }
   }
 
 
