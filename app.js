@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const data_store = require('./data_store.js');
 const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
 
 
 data_store.load_from_file();

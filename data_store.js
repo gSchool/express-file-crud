@@ -16,9 +16,9 @@ module.exports = {
         return err;
       }
       data_mem = JSON.parse(data)
-      console.log(data_mem);
+      // console.log(data_mem);
 
-      // Assigns LAST_ID
+      // Assigns largest id
       for (let i = 0; i < data_mem.length; i++) {
         if (data_mem[i].id > LAST_ID) {
           LAST_ID = data_mem[i].id;
@@ -29,7 +29,6 @@ module.exports = {
 
   // Gets the book object
   get_all_books: () => {
-    console.log(data_mem)
     return data_mem;
   },
 
@@ -43,7 +42,7 @@ module.exports = {
     return "undefined";
   },
 
-  // Writes new data to to file
+  // Writes new data to file
   write_to_file: (data_mem) => {
     fs.writeFile('./db/data.json', data_mem, 'utf8', (err) => {
       if (err) {
@@ -51,6 +50,14 @@ module.exports = {
       }
       else console.log('File written');
     })
+  },
+
+  // Adds new book
+  add_book: (obj) => {
+    obj.id = LAST_ID + 1;
+    data_mem.push(obj);
+    write_to_file();
+    return obj;
   }
 
 } //End of export
