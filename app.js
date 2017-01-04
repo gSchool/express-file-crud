@@ -3,21 +3,24 @@ const app = express()
 const port = 8000
 const dataStore = require('./data_store')
 
-var store = ""
- dataStore.load_from_file((data)=>{
-   store = data
-   //dataStore.get_books_by_id(store,3)
- })
 
- //console.log(store);
+ dataStore.load_from_file();
+
+
+
+
+
 app.get("/api/books",(req,res)=>{
-  res.send(dataStore.get_all_books(store))
+  let all_books = dataStore.get_all_books();
+  let code = all_books ? 200 : 400;
+  res.status(code).send(all_books);
 })
 
 app.get("/api/books/:id", (req, res) => {
   let id = Number(req.params.id)
-  res.send(dataStore.get_books_by_id(store,id))
-  res.status(404)
+  let book = dataStore.get_books_by_id(id);
+  let code = book ? 200 : 400;
+  res.status(code).send(book)
 })
 
 
