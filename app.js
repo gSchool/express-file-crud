@@ -2,15 +2,18 @@
 
 
 const express = require('express');
-//initialize
 const app = express();
 const data_store = require('./data_store');
+ const port = process.env.PORT || 8000
+//step 6
+const loadFile = function load_from_file () {
+	
+}
 
 
 
 
 
-const port = 8000
 app.listen(port, function() {
-  console.log('Listening on port 8000');
+  console.log('Listening on port', port);
 });
