@@ -42,16 +42,6 @@ module.exports = {
     return "undefined";
   },
 
-  // Writes new data to file
-  write_to_file: (data_mem) => {
-    fs.writeFile('./db/data.json', data_mem, 'utf8', (err) => {
-      if (err) {
-        throw err;
-      }
-      else console.log('File written');
-    })
-  },
-
   // Adds new book
   add_book: (obj) => {
     obj.id = LAST_ID + 1;
@@ -60,4 +50,15 @@ module.exports = {
     return obj;
   }
 
+
 } //End of export
+
+// Writes to file
+function write_to_file() {
+  fs.writeFile('./db/data.json', JSON.stringify(data_mem), 'utf8', (err) => {
+    if(err) {
+      throw err;
+    }
+    else console.log('Wrote file')
+  })
+}

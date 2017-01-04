@@ -26,3 +26,15 @@ app.get('/api/books/:id', (req, res) => {
     res.sendStatus(404);
   }
 })
+
+app.post('/api/books', jsonParser, (req, res) => {
+  if(!req.body) return res.sendStatus(400);
+  let newBook = {
+    id: '',
+    author: '',
+    title: ''
+  }
+  Object.assign(newBook, req.body);
+  data_store.add_book(newBook);
+  res.send(newBook);
+})
