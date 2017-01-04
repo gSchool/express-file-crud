@@ -41,7 +41,17 @@ app.put('api/books/:id', bodyParser.json(), (req,res) =>{
   let id = Number(req.params.id);
   if (body === undefined) {
     res.status(404).send("Not found.");
-  } else { //need the else?
-    res.send(storeMod.update_book(id, body));
-  }
+    } else { //need the else?
+      res.send(storeMod.update_book(id, body));
+    }
+});
+
+app.delete('api/books/:id', bodyParser.json(), (req,res) => {
+  let body = req.body;
+  let id = Number(req.params.id);
+  if (body === undefined) {
+    res.status(404).send("Not found.");
+    } else { //need the else?
+      res.send(storeMod.delete_book(id, body));
+    }
 });
