@@ -80,7 +80,6 @@ module.exports = {
   }
 
 
-
 } //End of export
 
 // Writes to file

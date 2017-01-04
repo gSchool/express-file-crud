@@ -45,3 +45,10 @@ app.put('/api/books/:id', jsonParser, (req, res) => {
   let book = data_store.update_book(id, req.body)
   res.send(book);
 })
+
+app.delete('/api/books/:id', jsonParser, (req, res) => {
+  let id = Number(req.params.id)
+  if(!req.body) return res.sendStatus(404)
+  let deleted = data_store.delete_book(id)
+  res.send(deleted)
+})
